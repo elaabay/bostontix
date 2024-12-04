@@ -1,75 +1,131 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9;
     color: #333;
 }
 
-h1 {
-    text-align: center;
-    color: #444;
-    margin-top: 20px;
-}
-
-/* Navigation Bar */
-nav {
+/* Header Styles */
+header {
     background-color: #333;
-    padding: 10px;
-    text-align: center;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav a {
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
 }
 
-/* Links */
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Main Content */
+/* Main Content Styles */
 main {
-    max-width: 800px;
-    margin: 20px auto;
     padding: 20px;
-    background: white;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons */
-button {
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form input, form textarea, form button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+form button {
     background-color: #007BFF;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
+form button:hover {
     background-color: #0056b3;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    text-align: center;
-    padding: 20px;
-    background: #333;
+    background-color: #333;
     color: white;
-    margin-top: 20px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
+
+/* Utility Classes */
+.center-text {
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    form {
+        gap: 10px;
+    }
+}
+
