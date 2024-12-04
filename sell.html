@@ -1,44 +1,35 @@
-<?php
-$servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "boston_ticket_resale";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Insert ticket
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $event_name = $_POST['event_name'];
-    $event_date = $_POST['event_date'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-
-    $sql = "INSERT INTO tickets (event_name, event_date, price, description) VALUES ('$event_name', '$event_date', $price, '$description')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Ticket added successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Ticket</title>
+    <style>
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sell_ticket.php">Sell a Ticket</a>
+        <a href="buy_ticket.php">Buy Tickets</a>
+    </nav>
+
     <h1>Sell a Ticket</h1>
     <form action="sell_ticket.php" method="post">
         <label for="event_name">Event Name:</label><br>
