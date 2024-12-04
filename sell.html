@@ -1,39 +1,55 @@
+<?php
+$servername = "localhost";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
+$dbname = "boston_ticket_resale";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Insert ticket
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $event_name = $_POST['event_name'];
+    $event_date = $_POST['event_date'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+
+    $sql = "INSERT INTO tickets (event_name, event_date, price, description) VALUES ('$event_name', '$event_date', $price, '$description')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Ticket added successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Tickets - Boston Ticket Resale</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sell Ticket</title>
 </head>
 <body>
-    <header>
-        <h1>Boston Ticket Resale</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="sell.html">Sell Tickets</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Sell Your Tickets</h2>
-        <form action="backend_script.php" method="POST">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" name="event_name" required>
-            
-            <label for="date">Event Date:</label>
-            <input type="date" id="date" name="event_date" required>
-            
-            <label for="price">Price (USD):</label>
-            <input type="number" id="price" name="price" step="0.01" required>
-            
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </main>
-    <footer>
-        <p>&copy; 2024 Boston Ticket Resale. All rights reserved.</p>
-    </footer>
+    <h1>Sell a Ticket</h1>
+    <form action="sell_ticket.php" method="post">
+        <label for="event_name">Event Name:</label><br>
+        <input type="text" id="event_name" name="event_name" required><br><br>
+        <label for="event_date">Event Date:</label><br>
+        <input type="date" id="event_date" name="event_date" required><br><br>
+        <label for="price">Price ($):</label><br>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+        <button type="submit">Sell Ticket</button>
+    </form>
 </body>
 </html>
