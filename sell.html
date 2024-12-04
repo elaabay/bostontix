@@ -3,44 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Ticket</title>
-    <style>
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        nav a:hover {
-            background-color: #575757;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Sell a Ticket</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="sell_ticket.php">Sell a Ticket</a>
-        <a href="buy_ticket.php">Buy Tickets</a>
-    </nav>
+    <header class="header-container">
+        <h1>Boston Ticket Resale</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sell.html">Sell a Ticket</a>
+            <a href="buy.html">Buy Tickets</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Sell Your Tickets</h1>
+        <form action="sell.php" method="POST">
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name" required>
 
-    <h1>Sell a Ticket</h1>
-    <form action="sell_ticket.php" method="post">
-        <label for="event_name">Event Name:</label><br>
-        <input type="text" id="event_name" name="event_name" required><br><br>
-        <label for="event_date">Event Date:</label><br>
-        <input type="date" id="event_date" name="event_date" required><br><br>
-        <label for="price">Price ($):</label><br>
-        <input type="number" id="price" name="price" step="0.01" required><br><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" required></textarea><br><br>
-        <button type="submit">Sell Ticket</button>
-    </form>
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date" required>
+
+            <label for="price">Price ($):</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Sell Ticket</button>
+        </form>
+    </main>
+    <footer class="footer">
+        &copy; 2024 Boston Ticket Resale. All Rights Reserved.
+    </footer>
 </body>
 </html>
