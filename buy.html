@@ -7,37 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Buy Tickets</h1>
-    <div id="ticket-list">
-        <!-- Tickets will be fetched and displayed here -->
-    </div>
-
-    <script>
-        // Fetch tickets using an API endpoint (assumes `fetch_tickets.php`)
-        fetch('fetch_tickets.php')
-            .then(response => response.json())
-            .then(data => {
-                const ticketList = document.getElementById('ticket-list');
-                if (data.length > 0) {
-                    data.forEach(ticket => {
-                        const ticketDiv = document.createElement('div');
-                        ticketDiv.innerHTML = `
-                            <h3>${ticket.event_name}</h3>
-                            <p>Date: ${ticket.event_date}</p>
-                            <p>Price: $${ticket.price}</p>
-                            <p>Description: ${ticket.description}</p>
-                            <form action="buy_ticket.php" method="POST">
-                                <input type="hidden" name="ticket_id" value="${ticket.id}">
-                                <button type="submit">Buy Ticket</button>
-                            </form>
-                        `;
-                        ticketDiv.classList.add('ticket');
-                        ticketList.appendChild(ticketDiv);
-                    });
-                } else {
-                    ticketList.innerHTML = '<p>No tickets available.</p>';
-                }
-            });
-    </script>
+    <header class="header-container">
+        <h1>Boston Ticket Resale</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sell.html">Sell a Ticket</a>
+            <a href="buy.html">Buy Tickets</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Available Tickets</h1>
+        <!-- Add PHP code to display available tickets here -->
+    </main>
+    <footer class="footer">
+        &copy; 2024 Boston Ticket Resale. All Rights Reserved.
+    </footer>
 </body>
 </html>
