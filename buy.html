@@ -30,9 +30,22 @@
         }
 
         async function buyTicket(ticketId) {
-            alert(`Ticket ID ${ticketId} purchased!`);
-            // Here, you'd send a request to a backend script to mark the ticket as sold
-        }
+    try {
+        const response = await fetch('https://your-siteground-domain/markAsSold.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `ticketId=${ticketId}`,
+        });
+
+        const data = await response.json();
+        alert(data.message || data.error);
+        fetchTickets(); // Refresh the tickets list
+    } catch (error) {
+        console.error('Error marking ticket as sold:', error);
+    }
+}
 
         window.onload = fetchTickets;
     </script>
