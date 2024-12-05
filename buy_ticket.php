@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "boston_ticket_resale";
+$username = "uumt9974yj6tk"; 
+$password = "2b1p%7@1@1%2"; 
+$dbname = "dbqgftcngor4ju";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
