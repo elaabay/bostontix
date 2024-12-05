@@ -23,7 +23,7 @@ html, body {
     position: fixed;
     top: 0;
     z-index: 1000;
-    background-color: #5D3FD3;
+    background-color: #000000; /* Set header background to black */
     padding: 15px 20px;
     width: 100%;
 }
@@ -47,12 +47,12 @@ html, body {
 }
 
 .header-container nav a:hover {
-    background-color: #917CED;
+    background-color: #575757; /* Light gray hover effect */
 }
 
 /* Footer Section */
 .footer {
-    background-color: #5D3FD3;
+    background-color: #000000; /* Set footer background to black */
     color: #FFFFFF;
     text-align: center;
     padding: 20px 0;
