@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Tickets</title>
     <script>
-        async function fetchTicket() {
+        // Function to fetch tickets
+        async function fetchTickets() {
             try {
-                const response = await fetch('https://https://elaa.sg-host.com/fetchTicket.php');
+                const response = await fetch('https://elaa.sg-host.com/fetchTicket.php');
                 const data = await response.json();
 
                 if (data.message) {
@@ -26,27 +27,31 @@
                 }
             } catch (error) {
                 console.error('Error fetching tickets:', error);
+                document.getElementById('tickets').innerHTML = '<p>Error loading tickets. Please try again later.</p>';
             }
         }
 
+        // Function to mark a ticket as sold
         async function buyTicket(ticketId) {
-    try {
-        const response = await fetch('https://https://elaa.sg-host.com/markAsSold.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `ticketId=${ticketId}`,
-        });
+            try {
+                const response = await fetch('https://elaa.sg-host.com/markAsSold.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `ticketId=${ticketId}`, // Send ticket ID in the body
+                });
 
-        const data = await response.json();
-        alert(data.message || data.error);
-        fetchTicket(); // Refresh the tickets list
-    } catch (error) {
-        console.error('Error marking ticket as sold:', error);
-    }
-}
+                const data = await response.json();
+                alert(data.message || data.error);
+                fetchTickets(); // Refresh the tickets list
+            } catch (error) {
+                console.error('Error marking ticket as sold:', error);
+                alert('Unable to process your request. Please try again.');
+            }
+        }
 
+        // Fetch tickets on page load
         window.onload = fetchTickets;
     </script>
 </head>
@@ -62,3 +67,4 @@
     </footer>
 </body>
 </html>
+
