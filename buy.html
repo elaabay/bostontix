@@ -4,25 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Tickets</title>
-    <link rel="stylesheet" href="styles.css">
+    <script>
+        async function fetchTickets() {
+            try {
+                const response = await fetch('https://your-siteground-domain/fetchTickets.php');
+                const data = await response.json();
+
+                if (data.message) {
+                    document.getElementById('tickets').innerHTML = `<p>${data.message}</p>`;
+                } else {
+                    const ticketsList = data.map(ticket => `
+                        <div class="ticket">
+                            <h3>${ticket.event_name}</h3>
+                            <p><strong>Date:</strong> ${ticket.event_date}</p>
+                            <p><strong>Price:</strong> $${ticket.price}</p>
+                            <p>${ticket.description}</p>
+                            <button onclick="buyTicket(${ticket.id})">Buy Now</button>
+                        </div>
+                    `).join('');
+                    document.getElementById('tickets').innerHTML = ticketsList;
+                }
+            } catch (error) {
+                console.error('Error fetching tickets:', error);
+            }
+        }
+
+        async function buyTicket(ticketId) {
+            alert(`Ticket ID ${ticketId} purchased!`);
+            // Here, you'd send a request to a backend script to mark the ticket as sold
+        }
+
+        window.onload = fetchTickets;
+    </script>
 </head>
 <body>
-    <header class="header-container">
-        <h1>Boston Ticket Resale</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="sell.html">Sell a Ticket</a>
-            <a href="buy.html">Buy Tickets</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
+    <header>
+        <h1>Available Tickets</h1>
     </header>
     <main>
-        <h1>Available Tickets</h1>
-        <!-- Add PHP code to display available tickets here -->
+        <div id="tickets">Loading tickets...</div>
     </main>
-    <footer class="footer">
-        &copy; 2024 Boston Ticket Resale. All Rights Reserved.
+    <footer>
+        <p>&copy; 2024 Boston Ticket Resale</p>
     </footer>
 </body>
 </html>
