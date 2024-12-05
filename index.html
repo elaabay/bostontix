@@ -1,26 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Boston Tix</title>
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="buy.html">Buy Tickets</a>
-            <a href="sell.html">Sell Tickets</a>
-            <a href="about.html">About Us</a>
-        </nav>
-    </header>
+    <!-- Header Section -->
+    <div id="header-container"></div>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-text">
+            <h2>Boston Tix</h2>
+            <p>Buy tickets and experience bundles to local Boston events</p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
     <main>
-        <h1>Welcome to Boston Ticket Resale</h1>
-        <p>Your one-stop shop for buying and selling tickets in Boston.</p>
+        <!-- Experiential Add-ons Blurb -->
+        <section class="experiential-addons">
+            <div class="content">
+                <h2>More Than Tickets</h2>
+                <p>At Boston Tix, we transform events into unforgettable experiences. 
+                    Our exclusive bundles connect you with the heart of Boston through 
+                    pre-show meet-and-greets, behind-the-scenes tours, and curated 
+                    dining options. Discover the magic of Boston with every ticket!</p>
+            </div>
+        </section>
+        <!-- Products Section -->
+        <section class="products">
+            <h2>Popular categories</h2>
+             <!-- Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="any">All</button>
+                <button class="filter-btn" data-filter="weekend">Trending</button>
+                <button class="filter-btn" data-filter="week">Sports</button>
+                <button class="filter-btn" data-filter="week">Conecerts</button>
+                <button class="filter-btn" data-filter="week">Theater & Comedy</button>
+            </div>
+            <div class="product-cards">
+                <div class="product-card">
+                    <img src="excersie1.jpeg" alt="Product 1">
+                    <h3>Trending</h3>
+                </div>
+                <div class="product-card">
+                    <img src="excersize3.jpeg" alt="Product 2">
+                    <h3>Sports Events</h3>
+                </div>
+                <div class="product-card">
+                    <img src="concert.jpg" alt="Product 3">
+                    <h3>Concerts</h3>
+                </div>
+                <div class="product-card">
+                    <img src="hamilton.jpg" alt="Product 4">
+                    <h3>Theater & Comedy</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Whats Next Section -->
+        <section class="products">
+            <h2>Discover Whats popular</h2>
+             <!-- Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="any">All</button>
+                <button class="filter-btn" data-filter="weekend">Trending</button>
+                <button class="filter-btn" data-filter="week">Sports</button>
+                <button class="filter-btn" data-filter="week">Conecerts</button>
+                <button class="filter-btn" data-filter="week">Theater & Comedy</button>
+            </div>
+            <div class="product-cards">
+                <div class="product-card">
+                    <img src="h.jpeg" alt="Product 1">
+                    <h3>Sabrina Carpenter</h3>
+                </div>
+                <div class="product-card">
+                    <img src="h.jpeg" alt="Product 2">
+                    <h3>NFL</h3>
+                </div>
+                <div class="product-card">
+                    <img src="h.jpg" alt="Product 3">
+                    <h3>Wicked</h3>
+                </div>
+                <div class="product-card">
+                    <img src="h.jpg" alt="Product 4">
+                    <h3>Coldplay</h3>
+                </div>
+            </div>
+        </section>
+        <hr />
+        <!-- Call to Action Section -->
+        <section class="cta-container">
+            <div class="cta-section">
+                <h2>Join Boston Tix Today!</h2>
+                <p>Sign up to recieve notifications when new events are posted and weekly newsletters!</p>
+                <form id="cta-form">
+                    <input type="email" id="cta-email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="button">Subscribe</button>
+                </form>
+                <p id="success-message" style="display: none;">Thank you for subscribing!</p>
+            </div>
+        </section>
+
+        <!-- jQuery Script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#cta-form').submit(function(event) {
+                    event.preventDefault(); // Prevent form submission
+                    $('#cta-form').fadeOut(500, function() { // Fade out form
+                        $('#success-message').fadeIn(500); // Fade in success message
+                    });
+                });
+            });
+        </script>
+        <!-- Footer -->
+        <div id="footer-container"></div>
+
+        <!-- JavaScript to Include Header and Footer -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                fetch('header.html')
+                    .then(response => response.text())
+                    .then(data => document.getElementById('header-container').innerHTML = data);
+
+                fetch('footer.html')
+                    .then(response => response.text())
+                    .then(data => document.getElementById('footer-container').innerHTML = data);
+            });
+        </script>
     </main>
-    <footer>
-        <p>&copy; 2024 Boston Ticket Resale</p>
-    </footer>
 </body>
 </html>
