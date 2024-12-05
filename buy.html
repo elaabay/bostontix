@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Tickets</title>
     <script>
-        async function fetchTickets() {
+        async function fetchTicket() {
             try {
-                const response = await fetch('https://https://elaa.sg-host.com/fetchTickets.php');
+                const response = await fetch('https://https://elaa.sg-host.com/fetchTicket.php');
                 const data = await response.json();
 
                 if (data.message) {
@@ -31,7 +31,7 @@
 
         async function buyTicket(ticketId) {
     try {
-        const response = await fetch('https://your-siteground-domain/markAsSold.php', {
+        const response = await fetch('https://https://elaa.sg-host.com/markAsSold.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
