@@ -1,6 +1,6 @@
 async function fetchTicket() {
     try {
-        const response = await fetch('https://elaa.sg-host.com/fetchticket.php');
+        const response = await fetch('https://elaa.sg-host.com/trial1.php');
         const data = await response.json();
 
         if (data.message) {
