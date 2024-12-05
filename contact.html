@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header-container">
+        <h1>Boston Ticket Resale</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sell.html">Sell a Ticket</a>
+            <a href="buy.html">Buy Tickets</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Contact Us</h1>
+        <form action="contact.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+    <footer class="footer">
+        &copy; 2024 Boston Ticket Resale. All Rights Reserved.
+    </footer>
+</body>
+</html>
