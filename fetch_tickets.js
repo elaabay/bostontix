@@ -1,27 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const ticketContainer = document.getElementById("ticket-container");
+async function fetchTicket() {
+    try {
+        const response = await fetch('https://elaa.sg-host.com/fetchticket.php');
+        const data = await response.json();
 
-    // Fetch tickets from the SiteGround server
-    fetch("https://https://elaa.sg-host.com/fetchticket.php")
-        .then((response) => response.json())
-        .then((data) => {
-            // Loop through the tickets and create HTML for each one
-            data.forEach((ticket) => {
-                const ticketCard = document.createElement("div");
-                ticketCard.classList.add("ticket-card");
-
-                ticketCard.innerHTML = `
+        if (data.message) {
+            document.getElementById('tickets').innerHTML = `<p>${data.message}</p>`;
+        } else {
+            const ticketsList = data.map(ticket => `
+                <div class="ticket">
                     <h3>${ticket.event_name}</h3>
-                    <p>Date: ${ticket.event_date}</p>
-                    <p>Price: $${ticket.price}</p>
+                    <p><strong>Date:</strong> ${ticket.event_date}</p>
+                    <p><strong>Price:</strong> $${ticket.price}</p>
                     <p>${ticket.description}</p>
-                    <button class="buy-button" data-id="${ticket.id}">Buy Ticket</button>
-                `;
+                    <button onclick="buyTicket(${ticket.id})">Buy Now</button>
+                </div>
+            `).join('');
+            document.getElementById('tickets').innerHTML = ticketsList;
+        }
+    } catch (error) {
+        console.error('Error fetching tickets:', error);
+        document.getElementById('tickets').innerHTML = `<p>Error loading tickets. Please try again later.</p>`;
+    }
+}
 
-                ticketContainer.appendChild(ticketCard);
-            });
-        })
-        .catch((error) => {
-            console.error("Error fetching tickets:", error);
-        });
-});
+window.onload = fetchTicket;
