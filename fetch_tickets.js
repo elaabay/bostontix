@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ticketContainer = document.getElementById("ticket-container");
 
     // Fetch tickets from the SiteGround server
-    fetch("https://https://elaa.sg-host.com/fetchTicket.php")
+    fetch("https://https://elaa.sg-host.com/fetchticket.php")
         .then((response) => response.json())
         .then((data) => {
             // Loop through the tickets and create HTML for each one
