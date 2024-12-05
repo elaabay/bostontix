@@ -41,7 +41,7 @@
 
         const data = await response.json();
         alert(data.message || data.error);
-        fetchTickets(); // Refresh the tickets list
+        fetchTicket(); // Refresh the tickets list
     } catch (error) {
         console.error('Error marking ticket as sold:', error);
     }
